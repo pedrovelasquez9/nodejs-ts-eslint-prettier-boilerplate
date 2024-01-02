@@ -1,0 +1,51 @@
+{
+  "name": "node-express-ts-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc src/",
+    "start":"node dist/index.js",
+    "dev":"nodemon src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrovelasquez9/nodejs-ts-eslint-prettier-boilerplate.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "typescript",
+    "prettier",
+    "eslint",
+    "prisma",
+    "mysql"
+  ],
+  "author": "Progrmación en español",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedrovelasquez9/nodejs-ts-eslint-prettier-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pedrovelasquez9/nodejs-ts-eslint-prettier-boilerplate#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.1",
+    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
