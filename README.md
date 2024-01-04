@@ -28,7 +28,6 @@ This is a NodeJS boilerplate project that contains the basic configuration for y
 
 ### TODO
 
--   Add Swagger
 -   Separate routes
 -   Centralize error handling
 -   Add generic type to patch
