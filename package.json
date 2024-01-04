@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc src/",
-    "start":"node dist/index.js",
-    "dev":"nodemon src/index.ts"
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "prisma": {
+    "seed": "ts-node --transpile-only prisma/seed.ts"
   },
   "repository": {
     "type": "git",
@@ -29,6 +32,8 @@
   },
   "homepage": "https://github.com/pedrovelasquez9/nodejs-ts-eslint-prettier-boilerplate#readme",
   "dependencies": {
+    "@prisma/client": "^5.7.1",
+    "body-parser": "^1.20.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2"
   },
@@ -45,6 +50,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^3.0.2",
     "prettier": "^3.1.1",
+    "prisma": "^5.7.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
