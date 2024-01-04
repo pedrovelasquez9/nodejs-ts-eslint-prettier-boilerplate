@@ -2,6 +2,8 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { getAllBooks, createBook, editBook, deleteBook } from "./services/book";
 import bodyParser from "body-parser";
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("../docs/swagger-output.json");
 
 const app: Express = express();
 const DEFAULT_PORT = process.env.DEFAULT_PORT || 3000;
@@ -40,6 +42,8 @@ app.delete("/book/:id", async (request: Request, response: Response) => {
         response.send("error");
     }
 });
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(DEFAULT_PORT, () => {
     console.log(`Hello nodejs/express app on port ${DEFAULT_PORT} =)`);
