@@ -28,8 +28,7 @@ This is a NodeJS boilerplate project that contains the basic configuration for y
 
 ### TODO
 
--   Separate routes
 -   Centralize error handling
 -   Add generic type to patch
--   Add jest for testing configuration
 -   Add docker
+-   Add logger
