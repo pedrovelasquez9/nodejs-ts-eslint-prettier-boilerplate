@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Router, Request, Response } from "express";
 import {
     getAllBooks,
     createBook,
@@ -7,7 +7,7 @@ import {
     getBookByID,
 } from "../services/book";
 
-export const router = express.Router();
+export const router = Router();
 
 router.get("/book", async (request: Request, response: Response) => {
     response.send(await getAllBooks());
