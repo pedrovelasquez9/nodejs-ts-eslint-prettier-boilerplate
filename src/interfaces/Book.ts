@@ -1,11 +1,11 @@
-export interface Book {
+import { Tracking } from "./Tracking";
+
+export type BookData = {
     id: number;
     title: string;
     author: string;
     description: string;
     status?: number | null;
-    created_by?: string | null;
-    created_at?: Date | null;
-    updated_by?: string | null;
-    updated_at?: Date | null;
-}
+};
+
+export type Book = BookData & Tracking;

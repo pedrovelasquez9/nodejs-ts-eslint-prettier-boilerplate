@@ -10,6 +10,10 @@ This is a NodeJS boilerplate project that contains the basic configuration for y
 -   TS-Node
 -   Prettier
 -   Eslint
+-   Swagger
+-   Prisma
+-   MySQL
+-   Jest
 
 ## How to use it
 
@@ -25,12 +29,20 @@ This is a NodeJS boilerplate project that contains the basic configuration for y
 -   Generate the migration script executing **npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script > prisma/migrations/0_init/migration.sql**
 -   In order to install Prisma client, execute **npm install @prisma/client**
 -   After that, you can generate the client executing **npx prisma generate**
--   If you want to have a seed file with default data for your database, you can have a seed.ts file inside **/prisma** directory with your data transactions and execute **npx prisma db seed**
+-   If you want to have a seed file with default data for your database, you can have a seed.ts file inside **/prisma** directory with your data transactions
+-   Add this to your package.json file:
+
+```
+"prisma": {
+    "seed": "ts-node --transpile-only prisma/seed.ts"
+  },
+```
+
+-   Finally execute **npx prisma db seed**
 -   More info: https://www.prisma.io/docs/orm/prisma-migrate/workflows/seeding#how-to-seed-your-database-in-prisma
 
 ### TODO
 
 -   Centralize error handling
--   Add generic type to patch
 -   Add docker
 -   Add logger

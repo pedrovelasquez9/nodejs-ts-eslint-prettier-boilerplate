@@ -1,7 +1,7 @@
 import prisma from "../client";
-import { Book } from "../interfaces/Book";
+import { Book, BookData } from "../interfaces/Book";
 
-export const getAllBooks = async (): Promise<Book[]> => {
+export const getAllBooks = async (): Promise<BookData[]> => {
     return await prisma.book.findMany({
         where: { status: 1 },
         select: {
@@ -13,7 +13,7 @@ export const getAllBooks = async (): Promise<Book[]> => {
     });
 };
 
-export const getBookByID = async (id: string): Promise<Book | null> => {
+export const getBookByID = async (id: string): Promise<BookData | null> => {
     try {
         const recordId = parseInt(id);
         return await prisma.book.findUnique({
@@ -27,7 +27,7 @@ export const getBookByID = async (id: string): Promise<Book | null> => {
     }
 };
 
-export const createBook = async (bookData: Book): Promise<Book> => {
+export const createBook = async (bookData: Book): Promise<BookData> => {
     try {
         return await prisma.book.create({
             data: bookData,
@@ -38,7 +38,10 @@ export const createBook = async (bookData: Book): Promise<Book> => {
     }
 };
 
-export const editBook = async (bookData: Book, id: string): Promise<Book> => {
+export const editBook = async (
+    bookData: Book,
+    id: string,
+): Promise<BookData> => {
     try {
         const recordId = parseInt(id);
         return await prisma.book.update({
@@ -53,7 +56,7 @@ export const editBook = async (bookData: Book, id: string): Promise<Book> => {
     }
 };
 
-export const deleteBook = async (id: string): Promise<Book> => {
+export const deleteBook = async (id: string): Promise<BookData> => {
     try {
         const recordId = parseInt(id);
         return await prisma.book.update({
