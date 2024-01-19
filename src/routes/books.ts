@@ -1,51 +1,14 @@
-import express, { Router, Request, Response } from "express";
-import {
-    getAllBooks,
-    createBook,
-    editBook,
-    deleteBook,
-    getBookByID,
-} from "../services/book";
+import { Router } from "express";
+import * as controller from "../controllers/books";
 
 export const router = Router();
 
-router.get("/book", async (request: Request, response: Response) => {
-    response.send(await getAllBooks());
-});
+router.get("/", controller.getAllBooks);
 
-router.get("/book/:id", async (request: Request, response: Response) => {
-    try {
-        const { id } = request.params;
-        response.send(await getBookByID(id));
-    } catch (error) {
-        response.send("error");
-    }
-});
+router.get("/:id", controller.getBookByID);
 
-router.post("/book", async (request: Request, response: Response) => {
-    try {
-        const { body } = request;
-        response.send(await createBook(body));
-    } catch (error) {
-        response.send("error");
-    }
-});
+router.post("/", controller.createBook);
 
-router.patch("/book/:id", async (request: Request, response: Response) => {
-    try {
-        const { id } = request.params;
-        const { body } = request;
-        response.send(await editBook(body, id));
-    } catch (error) {
-        response.send("error");
-    }
-});
+router.patch("/:id", controller.editBook);
 
-router.delete("/book/:id", async (request: Request, response: Response) => {
-    try {
-        const { id } = request.params;
-        response.send(await deleteBook(id));
-    } catch (error) {
-        response.send("error");
-    }
-});
+router.delete("/:id", controller.removeBook);

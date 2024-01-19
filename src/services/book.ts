@@ -1,39 +1,30 @@
-import prisma from "../client";
-import { Book, BookData } from "../interfaces/Book";
+import { Book, BookData } from "../types/Book";
+import * as db from "../db/books";
 
 export const getAllBooks = async (): Promise<BookData[]> => {
-    return await prisma.book.findMany({
-        where: { status: 1 },
-        select: {
-            id: true,
-            title: true,
-            author: true,
-            description: true,
-        },
-    });
+    try {
+        return await db.getAllBooks();
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 };
 
 export const getBookByID = async (id: string): Promise<BookData | null> => {
     try {
-        const recordId = parseInt(id);
-        return await prisma.book.findUnique({
-            where: {
-                id: recordId,
-            },
-        });
+        const recordId = Number(id);
+        return await db.getBookByID(recordId);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
 
 export const createBook = async (bookData: Book): Promise<BookData> => {
     try {
-        return await prisma.book.create({
-            data: bookData,
-        });
+        return await db.createBook(bookData);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
@@ -43,32 +34,20 @@ export const editBook = async (
     id: string,
 ): Promise<BookData> => {
     try {
-        const recordId = parseInt(id);
-        return await prisma.book.update({
-            where: {
-                id: recordId,
-            },
-            data: bookData,
-        });
+        const recordId = Number(id);
+        return await db.editBook(bookData, recordId);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
 
 export const deleteBook = async (id: string): Promise<BookData> => {
     try {
-        const recordId = parseInt(id);
-        return await prisma.book.update({
-            where: {
-                id: recordId,
-            },
-            data: {
-                status: 0,
-            },
-        });
+        const recordId = Number(id);
+        return await db.deleteBook(recordId);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
