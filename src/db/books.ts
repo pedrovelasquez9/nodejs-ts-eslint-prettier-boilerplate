@@ -2,15 +2,20 @@ import prisma from "../client";
 import { Book, BookData } from "../types/Book";
 
 export const getAllBooks = async (): Promise<BookData[]> => {
-    return await prisma.book.findMany({
-        where: { status: 1 },
-        select: {
-            id: true,
-            title: true,
-            author: true,
-            description: true,
-        },
-    });
+    try {
+        return await prisma.book.findMany({
+            where: { status: 1 },
+            select: {
+                id: true,
+                title: true,
+                author: true,
+                description: true,
+            },
+        });
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 };
 
 export const getBookByID = async (id: number): Promise<BookData | null> => {
@@ -21,7 +26,7 @@ export const getBookByID = async (id: number): Promise<BookData | null> => {
             },
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
@@ -32,7 +37,7 @@ export const createBook = async (bookData: Book): Promise<BookData> => {
             data: bookData,
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
@@ -49,7 +54,7 @@ export const editBook = async (
             data: bookData,
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
@@ -65,7 +70,7 @@ export const deleteBook = async (id: number): Promise<BookData> => {
             },
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         throw error;
     }
 };
